@@ -71,18 +71,39 @@ class MainGame
 	}
 	public function Clasification($data)
 	{
-		echo '<table id="klasyfikacja">';
-		print_r($data);
+		{
+		$ch = curl_init(GAMEURL.'/get-current-board.php');
+		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+		curl_setopt($ch, CURLOPT_TIMEOUT, 5);
+		$result = curl_exec($ch);
+		$result = json_decode($result);
+		curl_close($ch);
+		?><table id="klasyfikacja">
+			<tr>
+            	<td>lp.
+                </td>
+                <td id="srodek">Nazwa
+                </td>
+                <td>Pkt
+                </td>
+            </tr>
 		
 		
-		echo '</table>';
+		<?php
+		for($i=0; $i<count($result->players); $i++)
+		{
+			$j=$i+1;
+			echo "<tr><td>".$j ."</td><td>".$result->players{$i}->name."</td><td>".$result->players{$i}->score."</td></tr>";
+		}
+		?></table><?php
+	}
 	}
 	public function DrawBoard($data)
 	{
 		$boardSize = $data->settings->boardSize;
 		$boardSizeLetters = $this->getNameFromNumber($boardSize);
 		
-		echo '<table width="100%" border="1">';
+		echo '<table id="board" border="1">';
 		for($j = 1; $j <=$boardSize; $j++)
 		{
 			echo '<tr>';
@@ -92,7 +113,7 @@ class MainGame
 				if($color)
 				{
 					echo '<td bgcolor="'.$color.'">';
-					echo $i.$j;
+					
 					echo '</td>';					
 				}
 				else
@@ -145,6 +166,7 @@ class MainGame
 		}
 		return false;
 	}
+	
 	public function MoveTo($key, $direction, $distance, $fire)
 	{
 		$data = array(
