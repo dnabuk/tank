@@ -19,7 +19,8 @@ if(!$Main->CheckMyPlayerName())
 	}
 	else 
 	{
-		echo 'Error Login no. '.$LoginResult->data->key;
+		$_SESSION['key'] = KEY;
+		//echo 'Error Login no. '.$LoginResult->data->key;
 	}
 }
 //Sekcja odpowiedzialna za logowanie END
@@ -32,8 +33,8 @@ print_r($DrawBoardResult);
 //Pobieranie pozycji i decyzja o ruchu END
 
 //Wykonywanie ruchow START
-$direction = 'S';
-$distance = '1';
+$direction = 'W';
+$distance = '2';
 $fire = false;
 
 $MoveResult = $Main->MoveTo($_SESSION['key'], $direction, $distance, $fire);
