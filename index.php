@@ -3,19 +3,32 @@
 <head>
 <title>IAI Tank Game v1</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-</head>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script></head>
+<style>
+	#klasyfikacja td{
+		height:15px;}
+		#klasyfikacja td:first-child{
+		background:#CF9;}
+	#klasyfikacja tr:first-child{
+		background:#CFF;}
+	#srodek{
+		width:100px;}
+	#board{
+		background:#000;}
+	#board td{
+		width:25px;
+		height:25px;
+	}
+	#console button{
+		height:15px;
+		width:15px;
+		background:#C06;}
+	</style>
 <body>
-
-
 <div id="main">
 	<h2>PHP Camp - IAI Tank</h2>
 		<div id="refresh">
-			<table border="1" width="100%">
-				<tr>
-					<td colspan="4"><button type="button" name="btnStart">START GAME</button></td>
-				</tr>		
-			</table>		
+			<button type="button" name="btnStart">START GAME</button>
 		</div>
 </div>
 	<script type="text/javascript">
@@ -40,6 +53,6 @@
 	    });
 	}	
 
-	</script>
-	</body>
-	</html>
+</script>
+</body>
+</html>

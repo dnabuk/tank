@@ -2,21 +2,86 @@
 require_once('Config.php');
 
 $Main = new MainGame();
-//Sekcja odpowiedzialna za logowanie START
-if(!$Main->CheckMyPlayerName())
+
+
+$id = isset($_GET['id']) ? $_GET['id'] : false;
+
+if($id == 1) // Atak W
 {
-	$LoginResult = $Main->Login();
-	if($LoginResult->errno == 0)
-	{
-		$_SESSION['key'] = $LoginResult->data->key;
-	}
-	else 
-	{
-		echo 'Error Login no. '.$LoginResult->data->key;
-	}
+	$fire = true;
+	$direction = 'W';
 }
-if(!isset($_SESSION['key']) )
+else if($id == 2) //Wx2
 {
-	$_SESSION['key'] = KEY;
+	$fire = false;
+	$direction = 'W';
+	$distance = '2';
 }
-//Sekcja odpowiedzialna za logowanie END
+else if($id == 3) //Wx1
+{
+	$fire = false;
+	$direction = 'W';
+	$distance = '1';
+}
+else if($id == 4) //Ex1
+{
+	$fire = false;
+	$direction = 'E';
+	$distance = '1';
+}
+else if($id == 5) //Ex2
+{
+	$fire = false;
+	$direction = 'E';
+	$distance = '2';
+}
+else if($id == 6) //Atak E
+{
+	$fire = true;
+	$direction = 'E';
+}
+else if($id == 7) //Atak N
+{
+	$fire = true;
+	$direction = 'N';
+}
+else if($id == 8) //Nx2
+{
+	$fire = false;
+	$direction = 'N';
+	$distance = '2';
+}
+else if($id == 9) //Nx1
+{
+	$fire = false;
+	$direction = 'N';
+	$distance = '1';
+}
+else if($id == 10) //Sx1
+{
+	$fire = false;
+	$direction = 'S';
+	$distance = '1';
+}
+else if($id == 11) //Sx2
+{
+	$fire = false;
+	$direction = 'S';
+	$distance = '2';
+}
+else if($id == 12) //Atak S
+{
+	$fire = true;
+	$direction = 'S';
+}
+echo $_SESSION['key'];
+echo '<br>';
+echo $direction;
+echo '<br>';
+echo $distance;
+echo '<br>';
+echo var_dump($fire);
+$MoveResult = $Main->MoveTo($_SESSION['key'], $direction, $distance, $fire);
+print_r($MoveResult);
+//Wykonywanie ruchow END
+?>

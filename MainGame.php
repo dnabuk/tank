@@ -71,8 +71,20 @@ class MainGame
 	}
 	public function Clasification($data)
 	{
-		echo '<table id="klasyfikacja">';
-		print_r($data);
+		?>
+		<h3>Klasyfikacja</h3>
+		<table id="klasyfikacja" border="1" cellspacing="0">
+			<tr>
+				<td>lp.</td>
+				<td id="srodek">Nazwa</td>
+				<td>Pkt</td>
+			</tr>	
+			<?php	
+			for($i=0; $i<count($data->players); $i++)
+			{
+				$j=$i+1;
+				echo "<tr><td>".$j ."</td><td>".$data->players{$i}->name."</td><td>".$data->players{$i}->score."</td></tr>";
+			}		
 		
 		
 		echo '</table>';
@@ -82,7 +94,7 @@ class MainGame
 		$boardSize = $data->settings->boardSize;
 		$boardSizeLetters = $this->getNameFromNumber($boardSize);
 		
-		echo '<table width="100%" border="1">';
+		echo '<table id="board">';
 		for($j = 1; $j <=$boardSize; $j++)
 		{
 			echo '<tr>';
@@ -92,7 +104,7 @@ class MainGame
 				if($color)
 				{
 					echo '<td bgcolor="'.$color.'">';
-					echo $i.$j;
+					//echo $i.$j;
 					echo '</td>';					
 				}
 				else
@@ -145,14 +157,26 @@ class MainGame
 		}
 		return false;
 	}
-	public function MoveTo($key, $direction, $distance, $fire)
+	public function MoveTo($key, $direction = false, $distance = false, $fire = false)
 	{
-		$data = array(
-				'key' => $key,
-				'direction' => $direction,
-				'distance' => $distance,
-				'fire' => $fire,
-		);
+		if($fire)
+		{
+			$data = array(
+					'key' => $key,
+					'direction' => $direction,
+					'fire' => true,
+			);			
+		}
+		else
+		{
+			$data = array(
+					'key' => $key,
+					'direction' => $direction,
+					'distance' => $distance,
+					'fire' => false,
+			);			
+		}
+
 		
 		$ch = curl_init(GAMEURL.'/make-move.php');
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
