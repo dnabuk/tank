@@ -33,6 +33,7 @@ class MainGame
 			if($board{$i}->position == $id)
 			{
 				$type = $board{$i}->type;
+				
 				if($type == 'empty')
 				{
 					return 'white';
@@ -43,10 +44,20 @@ class MainGame
 				}
 				else if($type == 'player')
 				{
+					$name = $board{$i}->name;
+					if($name == PLAYERNAME)
+					{
+						return 'orange';
+					}
 					return 'green';
 				}
 				else if($type == 'player_base')
 				{
+					$name = $board{$i}->name;
+					if($name == PLAYERNAME)
+					{
+						return 'yellow';
+					}
 					return 'blue';
 				}
 				else if($type == 'missile')
