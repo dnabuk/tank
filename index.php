@@ -43,6 +43,7 @@
 					}
 				});
 				refreshTable(start);
+				
 			});
 			
 			
@@ -52,6 +53,7 @@
 	    $('#refresh').load('GetTable.php', function(){
 	       		setTimeout(refreshTable, 1000);
 	    });
+	    
 	}	
 
 </script>
