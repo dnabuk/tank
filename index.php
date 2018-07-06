@@ -7,6 +7,10 @@
 <style>
 	#klasyfikacja td{
 		height:15px;}
+		#klasyfikacja td:first-child{
+		background:#CF9;}
+	#klasyfikacja tr:first-child{
+		background:#CFF;}
 	#srodek{
 		width:100px;}
 	#board{

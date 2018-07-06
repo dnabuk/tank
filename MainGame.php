@@ -78,15 +78,16 @@ class MainGame
 		$result = curl_exec($ch);
 		$result = json_decode($result);
 		curl_close($ch);
-		?><table id="klasyfikacja">
-			<tr>
-            	<td>lp.
-                </td>
-                <td id="srodek">Nazwa
-                </td>
-                <td>Pkt
-                </td>
-            </tr>
+		?>	<h3>Klasyfikacja</h3>
+        	<table id="klasyfikacja" border=1>
+				<tr>
+            		<td>lp.
+                	</td>
+                	<td id="srodek">Nazwa
+                	</td>
+                	<td>Pkt
+                	</td>
+            	</tr>
 		
 		
 		<?php
