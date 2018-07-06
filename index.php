@@ -17,7 +17,9 @@
 		background:#000;}
 	#board td{
 		width:25px;
-		height:25px;}
+		height:25px;
+	}
+	
 	</style>
 </head>
 <body>
