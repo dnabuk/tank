@@ -29,20 +29,7 @@ $GetBoardResult = $Main->GetBoard();
 $DrawBoardResult = $Main->DrawBoard($GetBoardResult);
 
 print_r($DrawBoardResult);
-
-
-
-
-
-
-
 //Pobieranie pozycji i decyzja o ruchu END
-die;
-
-
-
-
-
 
 //Wykonywanie ruchow START
 $direction = 'S';
