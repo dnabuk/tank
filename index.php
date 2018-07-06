@@ -1,52 +1,45 @@
-<?php
-session_start();
+<!DOCTYPE html>
+<html>
+<head>
+<title>IAI Tank Game v1</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+</head>
+<body>
 
-define("GAMEURL", "http://tank.iai.ninja/api");
-define("PLAYERNAME", "Team_5");
-define("KEY", "02dab45610fa718dcf1d06fb514abb8d");
 
+<div id="main">
+	<h2>PHP Camp - IAI Tank</h2>
+		<div id="refresh">
+			<table border="1" width="100%">
+				<tr>
+					<td colspan="4"><button type="button" name="btnStart">START GAME</button></td>
+				</tr>		
+			</table>		
+		</div>
+</div>
+	<script type="text/javascript">
+	var start = false;
+	
+	$(document).ready(function(){
+			$("button[name='btnStart']").click(function(){
+				$.ajax({
+					url: "StartGame.php", success: function(result){
+					
+					}
+				});
+				refreshTable(start);
+			});
+			
+			
+		});
+	
+	function refreshTable(start){
+	    $('#refresh').load('GetTable.php', function(){
+	       		setTimeout(refreshTable, 1000);
+	    });
+	}	
 
-require_once('MainGame.php');
-$Main = new MainGame();
-;
-//Sekcja odpowiedzialna za logowanie START
-if(!$Main->CheckMyPlayerName())
-{
-	$LoginResult = $Main->Login();
-	if($LoginResult->errno == 0)
-	{
-		$_SESSION['key'] = $LoginResult->data->key;
-	}
-	else 
-	{
-		echo 'Error Login no. '.$LoginResult->data->key;
-	}
-}
-if(!isset($_SESSION['key']) )
-{
-	$_SESSION['key'] = KEY;
-}
-//Sekcja odpowiedzialna za logowanie END
-
-//Pobieranie pozycji i decyzja o ruchu START
-$GetBoardResult = $Main->GetBoard();
-if(($GetBoardResult->state == 'open'))
-{
-	echo 'Rozrywka jeszcze nie rozpoczeta...';
-	die;
-}
-
-$DrawBoardResult = $Main->DrawBoard($GetBoardResult);
-
-print_r($DrawBoardResult);
-//Pobieranie pozycji i decyzja o ruchu END
-
-//Wykonywanie ruchow START
-$direction = 'W';
-$distance = '2';
-$fire = false;
-
-$MoveResult = $Main->MoveTo($_SESSION['key'], $direction, $distance, $fire);
-
-print_r($MoveResult);
-//Wykonywanie ruchow END
+	</script>
+	</body>
+	</html>

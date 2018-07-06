@@ -69,12 +69,20 @@ class MainGame
 		}
 		return false;
 	}
+	public function Clasification($data)
+	{
+		echo '<table id="klasyfikacja">';
+		print_r($data);
+		
+		
+		echo '</table>';
+	}
 	public function DrawBoard($data)
 	{
 		$boardSize = $data->settings->boardSize;
 		$boardSizeLetters = $this->getNameFromNumber($boardSize);
 		
-		echo '<table>';
+		echo '<table width="100%" border="1">';
 		for($j = 1; $j <=$boardSize; $j++)
 		{
 			echo '<tr>';
