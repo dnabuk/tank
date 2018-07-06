@@ -8,7 +8,7 @@ define("KEY", "02dab45610fa718dcf1d06fb514abb8d");
 
 require_once('MainGame.php');
 $Main = new MainGame();
-$_SESSION['key'] = KEY;
+;
 //Sekcja odpowiedzialna za logowanie START
 if(!$Main->CheckMyPlayerName())
 {
@@ -22,10 +22,20 @@ if(!$Main->CheckMyPlayerName())
 		echo 'Error Login no. '.$LoginResult->data->key;
 	}
 }
+if(!isset($_SESSION['key']) )
+{
+	$_SESSION['key'] = KEY;
+}
 //Sekcja odpowiedzialna za logowanie END
 
 //Pobieranie pozycji i decyzja o ruchu START
 $GetBoardResult = $Main->GetBoard();
+if(($GetBoardResult->state == 'open'))
+{
+	echo 'Rozrywka jeszcze nie rozpoczeta...';
+	die;
+}
+
 $DrawBoardResult = $Main->DrawBoard($GetBoardResult);
 
 print_r($DrawBoardResult);
@@ -38,5 +48,5 @@ $fire = false;
 
 $MoveResult = $Main->MoveTo($_SESSION['key'], $direction, $distance, $fire);
 
-print_r($_SESSION['key']);
+print_r($MoveResult);
 //Wykonywanie ruchow END
