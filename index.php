@@ -6,8 +6,16 @@ define("PLAYERNAME", "Team_5");
 define("KEY", "02dab45610fa718dcf1d06fb514abb8d");
 
 
+<<<<<<< HEAD
 require_once('MainGame.php');
 $Main = new MainGame();
+=======
+
+//Logowanie do gry start
+$Login = new MainGame();
+$LoginResult = $Login->Login();
+$Login->moveTo2('02dab45610fa718dcf1d06fb514abb8d', 'E', 2, true);
+>>>>>>> c7db13216bb0fe5ab520b4d63deefc274e82c967
 
 //Sekcja odpowiedzialna za logowanie START
 if(!$Main->CheckMyPlayerName())
