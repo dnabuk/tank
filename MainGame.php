@@ -74,7 +74,7 @@ class MainGame
 		$boardSize = $data->settings->boardSize;
 		$boardSizeLetters = $this->getNameFromNumber($boardSize);
 		
-		echo '<table>';
+		echo '<table id="board">';
 		for($j = 1; $j <=$boardSize; $j++)
 		{
 			echo '<tr>';
@@ -127,7 +127,6 @@ class MainGame
 		$result = curl_exec($ch);
 		$result = json_decode($result);
 		curl_close($ch);
-
 		for($i=0; $i<count($result->players); $i++)
 		{
 			if($result->players{$i}->name == PLAYERNAME)
@@ -137,6 +136,34 @@ class MainGame
 		}
 		return false;
 	}
+	public function classification(){
+		{
+		$ch = curl_init(GAMEURL.'/get-current-board.php');
+		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+		curl_setopt($ch, CURLOPT_TIMEOUT, 5);
+		$result = curl_exec($ch);
+		$result = json_decode($result);
+		curl_close($ch);
+		?><table id="klasyfikacja">
+			<tr>
+            	<td>lp.
+                </td>
+                <td id="srodek">Nazwa
+                </td>
+                <td>Pkt
+                </td>
+            </tr>
+		
+		
+		<?php
+		for($i=0; $i<count($result->players); $i++)
+		{
+			$j=$i+1;
+			echo "<tr><td>".$j ."</td><td>".$result->players{$i}->name."</td><td>".$result->players{$i}->score."</td></tr>";
+		}
+		?></table><?php
+	}}
+	
 	public function MoveTo($key, $direction, $distance, $fire)
 	{
 		$data = array(

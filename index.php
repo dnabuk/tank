@@ -4,7 +4,17 @@ session_start();
 define("GAMEURL", "http://tank.iai.ninja/api");
 define("PLAYERNAME", "Team_5");
 define("KEY", "02dab45610fa718dcf1d06fb514abb8d");
-
+?>
+	<style>
+	#klasyfikacja td{
+		height:15px;}
+	#srodek{
+		width:100px;}
+	#board td{
+		width:25px;
+		height:25px;}
+	</style>
+<?php
 
 require_once('MainGame.php');
 $Main = new MainGame();
@@ -27,6 +37,7 @@ if(!isset($_SESSION['key']) )
 	$_SESSION['key'] = KEY;
 }
 //Sekcja odpowiedzialna za logowanie END
+$Main->classification();
 ?>
 <table>
 	<tr>
