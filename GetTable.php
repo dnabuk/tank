@@ -24,7 +24,7 @@ if(($GetBoardResult->state == 'open'))
         <td></td>
         <td></td>
         <td></td>
-        <td><button id="8">x2 North</button></td>
+        <td><button id="8" onclick="">x2 North</button></td>
         <td></td>
         <td></td>
         <td></td>
