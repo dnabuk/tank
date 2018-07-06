@@ -10,17 +10,17 @@ if(($GetBoardResult->state == 'open'))
 	die;
 }
 ?>
-<table border="1" width="100%">
+<table border="1" cellpadding="15" cellspacing="0" width="100%">
 	<tr>
-		<td colspan="6"><h2>LEGEND</h2></td>
+		<td colspan="6"><h2><center>LEGEND</center></h2></td>
 	</tr>
 	<tr>
-		<td bgcolor="green"><b>others_players</b></td>
-		<td bgcolor="orange"><b>my_tank</b></td>
-		<td bgcolor="blue"><b>others_base</b></td>
-		<td bgcolor="yellow"><b>my_base</b></td>
-		<td bgcolor="red"><b>obstacle</b></td>
-		<td bgcolor="black"><b><font color="white">missile</font></b></td>
+		<td bgcolor="green"><b><center>others_players</center></b></td>
+		<td bgcolor="orange"><b><center>my_tank</center></b></td>
+		<td bgcolor="blue"><b><center><font color="white">others_base</font></center></b></td>
+		<td bgcolor="yellow"><b><center>my_base</center></b></td>
+		<td bgcolor="red"><b><center>obstacle</center></b></td>
+		<td bgcolor="black"><b><center><font color="white">missile</font></center></b></td>
 	</tr>
 
 </table></br><br/>

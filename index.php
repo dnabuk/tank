@@ -26,11 +26,7 @@
 <div id="main">
 	<h2>PHP Camp - IAI Tank</h2>
 		<div id="refresh">
-			<table border="1" width="100%">
-				<tr>
-					<td colspan="4"><button type="button" name="btnStart">START GAME</button></td>
-				</tr>		
-			</table>		
+			<button type="button" name="btnStart">START GAME</button>
 		</div>
 </div>
 	<script type="text/javascript">
