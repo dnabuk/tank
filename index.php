@@ -23,7 +23,20 @@ if(!$Main->CheckMyPlayerName())
 	}
 }
 //Sekcja odpowiedzialna za logowanie END
+?>
+<table>
+	<tr>
+		<td bgcolor="green"><b>Others_players</b></td>
+        <td bgcolor="orange"><b>My_tank</b></td>
+        <td bgcolor="blue"><b>Others_base</b></td>
+        <td bgcolor="yellow"><b>My_base</b></td>
+        <td bgcolor="red"><b>obstacle</b></td>
+        <td bgcolor="black"<b> <font color="white">missile</font> </b></td>
+        
+	</tr>
 
+</table>
+<?php
 //Pobieranie pozycji i decyzja o ruchu START
 $GetBoardResult = $Main->GetBoard();
 $DrawBoardResult = $Main->DrawBoard($GetBoardResult);
