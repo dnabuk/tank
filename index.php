@@ -8,7 +8,7 @@ define("KEY", "02dab45610fa718dcf1d06fb514abb8d");
 
 require_once('MainGame.php');
 $Main = new MainGame();
-
+$_SESSION['key'] = KEY;
 //Sekcja odpowiedzialna za logowanie START
 if(!$Main->CheckMyPlayerName())
 {
@@ -19,8 +19,7 @@ if(!$Main->CheckMyPlayerName())
 	}
 	else 
 	{
-		$_SESSION['key'] = KEY;
-		//echo 'Error Login no. '.$LoginResult->data->key;
+		echo 'Error Login no. '.$LoginResult->data->key;
 	}
 }
 //Sekcja odpowiedzialna za logowanie END
