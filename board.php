@@ -1,3 +1,4 @@
+﻿<script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <style>
 	table{
 		background:#000;}
@@ -5,8 +6,11 @@
 		width:25px;
 		height:25px;
 		background-color:#fff;
+		
 
 	}
+	.obstacle{
+		background:#500;}
 	
 </style>
 <?php
@@ -21,6 +25,8 @@ function idpola($id){
 				break;
 				
 				}
+			
+				
 				
 			}
 	
@@ -35,10 +41,30 @@ class board
 	public function poz($board){
 		
 		$r=count($board["board"]);
-		for($i=0;$i<$r;$i++){			
+		for($i=0;$i<$r;$i++){
+			$x="";
+			$y="";		
 			$a=$board["board"][$i]['type'];
 			$b=$board["board"][$i]['position'];
-			echo $a." ".$b."<br/>";
+			$lpoz=strlen($b);
+			
+			for($j=0;$j<$lpoz;$j++){
+				if(($b[$j]>='0')&&($b[$j]<='9')){
+					$x=$x.$b[$j];
+					}else{
+						$y=$y.$b[$j];}
+				}
+				//echo $a." ".$b." x=".$x." y=".$y."<br/>";]
+				if($a=="obstacle"){
+				?>
+				<script>
+					var poz='<?= $b ?>';
+					poz='#'+poz;
+					$(poz).addClass('obstacle');
+				</script>
+                <?php
+				}
+			
 			}
 		
 	}
@@ -51,7 +77,7 @@ $board=json_decode($response,1);
 //print_r($board["board"][0]);
 //$r=count($board["board"][0]);
 ///echo $r;
-$this->poz($board);
+
 $a=($board ["settings"]["boardSize"]);
 
 ?>
@@ -59,11 +85,11 @@ $a=($board ["settings"]["boardSize"]);
 <?php
 for($i=1;$i<=$a;$i++){
 	
-	echo "<tr id='$i'>";
+	echo "<tr class='$i'>";
 
 	for($j=1;$j<=$a;$j++){
 		$x=idpola($j);
-		echo "<td id='$x'>";
+		echo "<td  id='$x$i'>";
 	?>
 	
 	
@@ -78,6 +104,7 @@ for($i=1;$i<=$a;$i++){
 ?>
 </table>
 <?php
+$this->poz($board);
 die;
 	}
 }
