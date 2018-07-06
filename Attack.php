@@ -74,13 +74,6 @@ else if($id == 12) //Atak S
 	$fire = true;
 	$direction = 'S';
 }
-echo $_SESSION['key'];
-echo '<br>';
-echo $direction;
-echo '<br>';
-echo $distance;
-echo '<br>';
-echo var_dump($fire);
 $MoveResult = $Main->MoveTo($_SESSION['key'], $direction, $distance, $fire);
 print_r($MoveResult);
 //Wykonywanie ruchow END

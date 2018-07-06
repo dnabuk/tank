@@ -43,7 +43,10 @@
 					}
 				});
 				refreshTable(start);
-				
+
+				$("button[name='btnStart']").click(function(){
+					alert('test');
+				});
 			});
 			
 			
@@ -52,8 +55,14 @@
 	function refreshTable(start){
 	    $('#refresh').load('GetTable.php', function(){
 	       		setTimeout(refreshTable, 1000);
+				$("button").click(function(){
+					id = this.id;
+					$.ajax({
+						url: "Attack.php?id=" + id, success: function(result){
+						}
+					});
+				});
 	    });
-	    
 	}	
 
 </script>
