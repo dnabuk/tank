@@ -79,7 +79,7 @@ class MainGame
 		$result = json_decode($result);
 		curl_close($ch);
 		?>	<h3>Klasyfikacja</h3>
-        	<table id="klasyfikacja" border=1>
+        	<table id="klasyfikacja" border="1" cellspacing="0">
 				<tr>
             		<td>lp.
                 	</td>
