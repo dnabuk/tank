@@ -19,7 +19,10 @@
 		width:25px;
 		height:25px;
 	}
-	
+	#console button{
+		height:15px;
+		width:15px;
+		background:#C06;}
 	</style>
 </head>
 <body>
